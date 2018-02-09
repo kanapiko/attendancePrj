@@ -15,14 +15,16 @@
  */
 package com.linecorp.sample.login.application.controller;
 
-import javax.servlet.http.HttpSession;
 import java.util.Arrays;
+
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.linecorp.sample.login.infra.line.api.v2.LineAPIService;
@@ -48,7 +50,7 @@ public class WebController {
      * <p>LINE Login Button Page
      * <p>Login Type is to log in on any desktop or mobile website
      */
-    @RequestMapping("/")
+    @RequestMapping(value = "/login", method=RequestMethod.GET)
     public String login() {
         return "user/login";
     }
@@ -56,7 +58,7 @@ public class WebController {
     /**
      * <p>Redirect to LINE Login Page</p>
      */
-    @RequestMapping(value = "/gotoauthpage")
+    @RequestMapping(value = "/gotoauthpage", method=RequestMethod.POST)
     public String goToAuthPage(HttpSession httpSession){
         final String state = CommonUtils.getToken();
         final String nonce = CommonUtils.getToken();
@@ -70,7 +72,7 @@ public class WebController {
      * <p>Redirect Page from LINE Platform</p>
      * <p>Login Type is to log in on any desktop or mobile website
      */
-    @RequestMapping("/auth")
+    @RequestMapping(value = "/auth", method=RequestMethod.GET)
     public String auth(
             HttpSession httpSession,
             @RequestParam(value = "code", required = false) String code,

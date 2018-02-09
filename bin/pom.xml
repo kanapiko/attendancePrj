@@ -91,11 +91,6 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
-      <plugin>
-      	<groupId>com.linecorp.sample.login</groupId>
-      	<artifactId>line-login-starter</artifactId>
-      	<version>1.0-SNAPSHOT</version>
-      </plugin>
     </plugins>
   </build>
 
