@@ -6,7 +6,7 @@ update m_user
     <#if mail??>
       ,mail = :mail
     </#if>
-    <#if password??>
+    <#if lineId??>
       ,line_id = :lineId
     </#if>
 where user_id = :userId
