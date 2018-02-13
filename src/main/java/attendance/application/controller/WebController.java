@@ -88,6 +88,8 @@ public class WebController {
             return "user/login";
         }
 
+        logger.info("mail address :" + loginForm.mail);
+
         final String state = CommonUtils.getToken();
         final String nonce = CommonUtils.getToken();
         httpSession.setAttribute(LINE_WEB_LOGIN_STATE, state);
@@ -131,6 +133,8 @@ public class WebController {
 
         final String mail = (String) httpSession.getAttribute(USER_MAIL);
 
+        logger.info("mail address :" + mail);
+
         if(StringUtils.isEmpty(mail)) {
             return "redirect:/loginError";
         }
@@ -156,7 +160,13 @@ public class WebController {
 
         httpSession.setAttribute(ACCESS_TOKEN, token);
 
-        userService.registerLineId(userOpt.get().userId, lineAPIService.idToken(token.id_token).sub);
+        logger.info("access token: " + token);
+
+        final IdToken idToken = lineAPIService.idToken(token.id_token);
+
+        logger.info("id token: " + idToken);
+
+        userService.registerLineId(userOpt.get().userId, idToken.sub);
 
         return "redirect:/success";
     }

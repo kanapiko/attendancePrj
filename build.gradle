@@ -23,10 +23,6 @@ tasks.withType(JavaCompile) {
 	options.encoding = 'UTF-8'
 }
 
-bootRepackage {
-    mainClass = 'attendance.application.Application'
-}
-
 bootRun {
     addResources = true
 }

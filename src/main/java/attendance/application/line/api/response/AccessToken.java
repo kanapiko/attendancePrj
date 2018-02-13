@@ -33,4 +33,10 @@ public final class AccessToken {
         this.id_token = id_token;
     }
 
+    @Override
+    public String toString() {
+        return "AccessToken [scope=" + scope + ", access_token=" + access_token + ", token_type=" + token_type
+                + ", expires_in=" + expires_in + ", refresh_token=" + refresh_token + ", id_token=" + id_token + "]";
+    }
+
 }

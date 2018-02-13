@@ -34,7 +34,14 @@ public final class IdToken {
         this.nonce = nonce;
         this.name = name;
         this.picture = picture;
+    }
+
+    @Override
+    public String toString() {
+        return "IdToken [iss=" + iss + ", sub=" + sub + ", aud=" + aud + ", exp=" + exp + ", iat=" + iat + ", nonce="
+                + nonce + ", name=" + name + ", picture=" + picture + "]";
     };
+
 
 }
 
