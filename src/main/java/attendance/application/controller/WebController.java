@@ -195,7 +195,7 @@ public class WebController {
             logger.debug("pictureUrl : " + idToken.picture);
         }
         model.addAttribute("idToken", idToken);
-        return "user/success";
+        return "user/add_friend";
     }
 
     /**
