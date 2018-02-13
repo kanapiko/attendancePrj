@@ -3,8 +3,9 @@
 .classpath
 .settings
 
-# Maven
+# Maven/Gradle
 target
 
 /bin/
 /.gradle/
+/build

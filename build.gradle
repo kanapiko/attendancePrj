@@ -23,8 +23,15 @@ tasks.withType(JavaCompile) {
 	options.encoding = 'UTF-8'
 }
 
-repositories {
+bootRepackage {
+    mainClass = 'attendance.application.Application'
+}
 
+bootRun {
+    addResources = true
+}
+
+repositories {
      maven { url "http://repo.maven.apache.org/maven2" }
 }
 dependencies {
