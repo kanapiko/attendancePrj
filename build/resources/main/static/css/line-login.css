@@ -32,3 +32,11 @@
 .profile-button {
   margin: 20px 0
 }
+
+button.line-login {
+  width: 151px;
+  height: 44px;
+  padding: 0;
+  border: none;
+  background: url("../img/btn_login_base.png") no-repeat;
+}

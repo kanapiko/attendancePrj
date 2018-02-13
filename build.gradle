@@ -9,10 +9,10 @@ buildscript {
 }
 
 apply plugin: 'java'
-apply plugin: 'maven'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'eclipse'
 
-group = 'com.linecorp.sample.login'
+group = 'attendance'
 version = '1.0-SNAPSHOT'
 
 description = """line-login-starter"""
@@ -30,7 +30,10 @@ repositories {
 dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version:'1.5.7.RELEASE'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version:'1.5.7.RELEASE'
-    compile group: 'org.springframework.boot', name: 'spring-boot-devtools', version:'1.5.7.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc'
+    compile group: 'ninja.cero.bootiful-sqltemplate', name: 'bootiful-sqltemplate-core', version:'1.0.1'
+    compile group: 'org.flywaydb', name: 'flyway-core'
+    compile group: 'org.postgresql', name: 'postgresql', version:'42.2.1'
     compile group: 'com.squareup.retrofit2', name: 'retrofit', version:'2.0.0'
     compile group: 'com.squareup.retrofit2', name: 'converter-gson', version:'2.0.0'
     compile group: 'com.squareup.okhttp3', name: 'logging-interceptor', version:'3.2.0'
