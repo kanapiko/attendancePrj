@@ -13,14 +13,15 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package attendance.application.controller;
+package attendance.application.web;
 
-import java.util.Arrays;
-import java.util.Optional;
-
-import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
-
+import attendance.application.entity.MUser;
+import attendance.application.form.LoginForm;
+import attendance.application.line.api.response.AccessToken;
+import attendance.application.line.api.response.IdToken;
+import attendance.application.service.LineAPIService;
+import attendance.application.service.UserService;
+import attendance.application.utils.CommonUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,13 +34,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import attendance.application.entity.MUser;
-import attendance.application.form.LoginForm;
-import attendance.application.line.api.response.AccessToken;
-import attendance.application.line.api.response.IdToken;
-import attendance.application.service.LineAPIService;
-import attendance.application.service.UserService;
-import attendance.application.utils.CommonUtils;
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+import java.util.Arrays;
+import java.util.Optional;
 
 /**
  * <p>user web application pages</p>
@@ -47,7 +45,7 @@ import attendance.application.utils.CommonUtils;
 @Controller
 public class WebController {
 
-	private static final Logger logger = LoggerFactory.getLogger(WebController.class);
+    private static final Logger logger = LoggerFactory.getLogger(WebController.class);
 
 	private static final String USER_MAIL = "userEmail";
     private static final String LINE_WEB_LOGIN_STATE = "lineWebLoginState";

@@ -13,17 +13,11 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package attendance.application.controller;
+package attendance.application.api;
 
-import javax.servlet.http.HttpSession;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import attendance.application.line.api.response.AccessToken;
-import attendance.application.line.api.response.Verify;
 import attendance.application.service.LineAPIService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class APIController {
@@ -31,6 +25,7 @@ public class APIController {
     @Autowired
     private LineAPIService lineAPIService;
 
+    /*
     @RequestMapping("api/refreshToken")
     public AccessToken refreshToken(HttpSession httpSession) {
         final AccessToken token = getAccessToken(httpSession);
@@ -60,6 +55,7 @@ public class APIController {
     private void setAccessToken(HttpSession httpSession, AccessToken accessToken) {
         httpSession.setAttribute(WebController.ACCESS_TOKEN, accessToken);
     }
+    */
 
 
 }

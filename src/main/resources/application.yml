@@ -1,20 +1,12 @@
 server:
     port: 9000
-
 management:
     address: 127.0.0.1
     port: 9100
-
 logging:
     level:
         attendance.application: DEBUG
         org.springframework.jdbc.core.JdbcTemplate: DEBUG
-linecorp:
-    platform:
-        channel:
-            channelId: 1
-            channelSecret: 1
-            callbackUrl: 1
 spring:
     datasource:
         url: jdbc:postgresql://localhost:5432/kenshu
@@ -25,3 +17,9 @@ spring:
         encoding: UTF-8
     thymeleaf:
         cache: false
+linecorp:
+    platform:
+        channel:
+            channelId: 1
+            channelSecret: 1
+            callbackUrl: 1
