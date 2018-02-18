@@ -19,7 +19,7 @@ CREATE TABLE m_user(
 COMMENT ON TABLE m_user IS 'ユーザマスタ';
 
 CREATE TABLE m_org(
-  org_id INTEGER NOT NULL
+  org_cd CHAR(2) NOT NULL
  ,org_name VARCHAR(20) NOT NULL
  ,location VARCHAR(20) NOT NULL
  ,regist_date TIMESTAMP DEFAULT now() NOT NULL
@@ -29,6 +29,6 @@ CREATE TABLE m_org(
  ,update_user_id INTEGER DEFAULT 0 NOT NULL
  ,update_func_cd VARCHAR(20) DEFAULT '0' NOT NULL
  ,del_flg CHAR(1) DEFAULT '0' NOT NULL
- ,PRIMARY KEY(org_id)
+ ,PRIMARY KEY(org_cd)
 );
 COMMENT ON TABLE m_org IS '組織マスタ';
