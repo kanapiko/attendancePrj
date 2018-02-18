@@ -64,6 +64,11 @@ public class AdminController {
         }
     }
 
+    @RequestMapping(value = "/users")
+    public String getUsers() {
+        return "admin/users";
+    }
+
     public String logout(HttpSession session) {
         session.invalidate();
         return "redirect:/admin/login";
