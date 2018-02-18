@@ -28,7 +28,7 @@ public class UserService {
 		return muserDao.selectByMail(mail);
 	}
 
-	public void registerLineId(Long userId, String lineId) {
+	public void registerLineId(Integer userId, String lineId) {
 	    muserDao.selectByPk(userId).ifPresent(muser -> {
 	        MUser entity = new MUser();
 	        entity.userId = userId;
@@ -44,7 +44,7 @@ public class UserService {
 			return Optional.empty();
 		}
 
-		return muserDao.selectByPk(new Long(userId))
+		return muserDao.selectByPk(new Integer(userId))
 				.filter(muser ->
 						muser.delFlg.equals(DelFlg.NONE.getVal())
 								&& muser.authCd.equals(AuthCd.ADMIN.getCode())

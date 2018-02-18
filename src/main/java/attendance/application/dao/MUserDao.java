@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+import attendance.application.dto.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +17,7 @@ public class MUserDao {
 	@Autowired
 	private SqlTemplate sqlTemplate;
 
-	public Optional<MUser> selectByPk(Long userId) {
+	public Optional<MUser> selectByPk(Integer userId) {
 	    return Optional.ofNullable(sqlTemplate.forObject("sql/MUserDao/selectByPk.sql", MUser.class, userId));
 	}
 
@@ -24,8 +25,8 @@ public class MUserDao {
 		return Optional.ofNullable(sqlTemplate.forObject("sql/MUserDao/selectByMail.sql", MUser.class, mail));
 	}
 
-	public List<MUser> find(MUser cond) {
-		return sqlTemplate.forList("sql/MUserDao/find.sql", MUser.class, cond);
+	public List<UserInfo> findUsers(MUser cond) {
+		return sqlTemplate.forList("sql/MUserDao/findUsers.sql", UserInfo.class);
 	}
 
 	public int insert(MUser entity) {
