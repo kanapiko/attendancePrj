@@ -7,10 +7,10 @@ import java.time.LocalDateTime;
  */
 public class AbstractMasterEntity {
     public LocalDateTime registDate;
-    public String registUserId;
+    public Integer registUserId;
     public String registFuncCd;
     public LocalDateTime updateDate;
-    public String updateUserId;
+    public Integer updateUserId;
     public String updateFuncCd;
     public String delFlg;
 }
