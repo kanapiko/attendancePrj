@@ -16,7 +16,7 @@
 package attendance.application.web;
 
 import attendance.application.entity.MUser;
-import attendance.application.form.LoginForm;
+import attendance.application.web.form.LoginForm;
 import attendance.application.line.api.response.AccessToken;
 import attendance.application.line.api.response.IdToken;
 import attendance.application.service.LineAPIService;

@@ -1,4 +1,4 @@
-package attendance.application.form;
+package attendance.application.web.form;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;

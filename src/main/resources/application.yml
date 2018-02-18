@@ -17,6 +17,12 @@ spring:
         encoding: UTF-8
     thymeleaf:
         cache: false
+security:
+    user:
+        name: manager
+        password: ziNYWtS58L8A
+    basic:
+        enabled: false
 linecorp:
     platform:
         channel:
