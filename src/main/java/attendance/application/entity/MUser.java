@@ -1,13 +1,15 @@
 package attendance.application.entity;
 
-import java.time.LocalDateTime;
-
-public class MUser {
+/**
+ * ユーザマスタエンティティ
+ */
+public class MUser extends AbstractMasterEntity {
 	public Long userId;
 	public String password;
 	public String name;
 	public String mail;
+	public String authCd;
+	public String orgCd;
+	public String managerId;
 	public String lineId;
-	public LocalDateTime registDate;
-	public LocalDateTime updateDate;
 }
