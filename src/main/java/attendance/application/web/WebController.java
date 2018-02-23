@@ -43,6 +43,7 @@ import java.util.Optional;
  * <p>user web application pages</p>
  */
 @Controller
+@RequestMapping(value = "/user")
 public class WebController {
 
     private static final Logger logger = LoggerFactory.getLogger(WebController.class);

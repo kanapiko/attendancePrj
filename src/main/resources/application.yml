@@ -17,6 +17,12 @@ spring:
         encoding: UTF-8
     thymeleaf:
         cache: false
+    session:
+        store-type: redis
+    redis:
+        host: localhost
+        password:
+        port: 6379
 security:
     user:
         name: manager
