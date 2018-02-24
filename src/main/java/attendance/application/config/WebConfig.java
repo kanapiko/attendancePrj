@@ -20,7 +20,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     }
 
     /**
-     * ValidationのメッセージをUTF-8で管理します。
+     * ValidationのメッセージをUTF-8で管理する。
      * @return
      */
     @Bean(name = "messageSource")

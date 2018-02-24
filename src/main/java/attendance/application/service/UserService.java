@@ -1,22 +1,25 @@
 package attendance.application.service;
 
-import java.util.List;
-import java.util.Optional;
-
+import attendance.application.dao.MUserDao;
 import attendance.application.dto.UserInfo;
 import attendance.application.emuns.AuthCd;
 import attendance.application.emuns.DelFlg;
+import attendance.application.entity.MUser;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import attendance.application.dao.MUserDao;
-import attendance.application.entity.MUser;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
 public class UserService {
+
+	private final static Logger logger = LoggerFactory.getLogger(UserService.class);
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -52,8 +55,8 @@ public class UserService {
 				);
 	}
 
-	public List<UserInfo> findUsers() {
-		return muserDao.findUsers(new MUser());
+	public List<UserInfo> findUsers(String orgCd) {
+		return muserDao.findUsers(orgCd);
 	}
 
 }
