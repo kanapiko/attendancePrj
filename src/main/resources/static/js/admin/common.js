@@ -1,3 +1,4 @@
+
 /**
  * ローディング画像をオーバーレイ表示する。
  */
@@ -14,3 +15,7 @@ function loading(overlayBox) {
 function removeLoading(overlayBox) {
   $("#" + overlayBox + " div.overlay").remove();
 }
+
+$(function() {
+  $('.fade-out').fadeOut(3000);
+});

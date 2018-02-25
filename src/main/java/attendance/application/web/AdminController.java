@@ -1,34 +1,42 @@
 package attendance.application.web;
 
+import attendance.application.entity.MSetting;
 import attendance.application.service.OrgService;
+import attendance.application.service.SettingService;
 import attendance.application.service.UserService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import attendance.application.web.form.SettingForm;
+import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * 管理画面コントローラ
  */
+@Slf4j
 @Controller
 @RequestMapping(value="/admin")
 public class AdminController {
 
-    private final static Logger logger = LoggerFactory.getLogger(AdminController.class);
+    @Autowired
+    private ModelMapper modelMapper;
 
     @Autowired
     private UserService userService;
 
     @Autowired
     private OrgService orgService;
+
+    @Autowired
+    private SettingService settingService;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(Model model) {
@@ -82,5 +90,54 @@ public class AdminController {
         res.put("results", userService.findUsers(orgCd));
 
         return res;
+    }
+
+    /**
+     *
+     * 設定画面
+     *
+     * @param settingForm
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/setting", method = RequestMethod.GET)
+    public String setting(@ModelAttribute SettingForm settingForm,
+                          Model model) {
+
+        MSetting mSetting = settingService.getSetting().orElse(new MSetting());
+
+        modelMapper.map(mSetting, settingForm);
+
+        log.debug("settingForm : {} :", settingForm);
+
+        return "admin/setting";
+    }
+
+    /**
+     *
+     * 設定情報を登録する
+     *
+     * @param settingForm
+     * @param bindingResult
+     * @param model
+     * @param redirectAttributes
+     * @return
+     */
+    @RequestMapping(value = "/setting", method = RequestMethod.POST)
+    public String saveSetting(@ModelAttribute @Valid SettingForm settingForm,
+                              BindingResult bindingResult,
+                              Model model,
+                              RedirectAttributes redirectAttributes) {
+        if(bindingResult.hasErrors()) {
+            return "admin/setting";
+        }
+
+        MSetting setting = modelMapper.map(settingForm, MSetting.class);
+
+        settingService.registerSetting(setting);
+
+        redirectAttributes.addFlashAttribute("updateSuccessMsg", "保存が完了しました");
+
+        return "redirect:/admin/setting";
     }
 }

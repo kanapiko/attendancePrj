@@ -3,7 +3,7 @@ package attendance.application.service;
 import attendance.application.dao.MUserDao;
 import attendance.application.dto.UserInfo;
 import attendance.application.emuns.AuthCd;
-import attendance.application.emuns.DelFlg;
+import attendance.application.emuns.Flag;
 import attendance.application.entity.MUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,7 +49,7 @@ public class UserService {
 
 		return muserDao.selectByPk(new Integer(userId))
 				.filter(muser ->
-						muser.delFlg.equals(DelFlg.NONE.getVal())
+						muser.delFlg.equals(Flag.OFF.getVal())
 								&& muser.authCd.equals(AuthCd.ADMIN.getCode())
 								&& passwordEncoder.matches(password, muser.password)
 				);

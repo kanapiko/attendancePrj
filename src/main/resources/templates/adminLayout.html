@@ -22,7 +22,6 @@
     <link rel="stylesheet" type="text/css" th:href="@{/admin-lte/dist/css/skins/skin-blue-light.min.css}"
           href="../../static/admin-lte/dist/css/skins/skin-blue-light.min.css"/>
 
-
     <link rel="stylesheet" type="text/css" th:href="@{/css/admin.css}"
           href="../../static/css/admin.css"/>
 
@@ -63,8 +62,8 @@
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu">
                 <li class="header">管理メニュー</li>
-                <li><a th:href="@{'/admin/users/'}"><i class="fa fa-users"></i> <span>ユーザ・組織管理</span></a></li>
-
+                <li><a th:href="@{'/admin/setting'}"><i class="fa fa-cog"></i> <span>初期設定</span></a></li>
+                <li><a th:href="@{'/admin/user-org'}"><i class="fa fa-users"></i> <span>ユーザ・組織管理</span></a></li>
             </ul>
             <!-- /.sidebar-menu -->
         </section>

@@ -1,3 +1,30 @@
+CREATE TABLE m_setting(
+  open_time CHAR(2) NOT NULL DEFAULT '09'
+ ,open_minutes CHAR(2) NOT NULL DEFAULT '00'
+ ,close_time CHAR(2) NOT NULL DEFAULT '18'
+ ,close_minutes CHAR(2) NOT NULL DEFAULT '00'
+ ,alert_open_time CHAR(2) NOT NULL DEFAULT '08'
+ ,alert_open_minutes CHAR(2) NOT NULL DEFAULT '55'
+ ,alert_close_time CHAR(2) NOT NULL DEFAULT '20'
+ ,alert_close_minutes CHAR(2) NOT NULL DEFAULT '00'
+ ,business_flag_mon CHAR(1) NOT NULL DEFAULT '1'
+ ,business_flag_tue CHAR(1) NOT NULL DEFAULT '1'
+ ,business_flag_wed CHAR(1) NOT NULL DEFAULT '1'
+ ,business_flag_thu CHAR(1) NOT NULL DEFAULT '1'
+ ,business_flag_fri CHAR(1) NOT NULL DEFAULT '1'
+ ,business_flag_sat CHAR(1) NOT NULL DEFAULT '0'
+ ,business_flag_sun CHAR(1) NOT NULL DEFAULT '0'
+ ,alert_flag CHAR(1) NOT NULL DEFAULT '1'
+ ,regist_date TIMESTAMP DEFAULT now() NOT NULL
+ ,regist_user_id INTEGER DEFAULT 0 NOT NULL
+ ,regist_func_cd VARCHAR(20) DEFAULT '0' NOT NULL
+ ,update_date TIMESTAMP DEFAULT now() NOT NULL
+ ,update_user_id INTEGER DEFAULT 0 NOT NULL
+ ,update_func_cd VARCHAR(20) DEFAULT '0' NOT NULL
+ ,del_flg CHAR(1) DEFAULT '0' NOT NULL
+);
+COMMENT ON TABLE m_setting IS '設定マスタ';
+
 CREATE TABLE m_user(
   user_id INTEGER NOT NULL
  ,password VARCHAR(64) NOT NULL

@@ -24,7 +24,7 @@ public class MUserDao {
 	private SqlTemplate sqlTemplate;
 
 	public Optional<MUser> selectByPk(Integer userId) {
-	    return Optional.ofNullable(sqlTemplate.forObject("sql/MUserDao/selectByPk.sql", MUser.class, userId));
+		return Optional.ofNullable(sqlTemplate.forObject("sql/MUserDao/selectByPk.sql", MUser.class, userId));
 	}
 
 	public Optional<MUser> selectByMail(String mail) {
