@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -32,7 +34,11 @@ public class MUserDao {
 	}
 
 	public List<UserInfo> findUsers(String orgCd) {
-		return sqlTemplate.forList("sql/MUserDao/findUsers.sql", UserInfo.class, orgCd);
+
+		Map<String, Object> cond = new HashMap<>();
+		cond.put("orgCd", orgCd);
+
+		return sqlTemplate.forList("sql/MUserDao/findUsers.sql", UserInfo.class, cond);
 	}
 
 	public int insert(MUser entity) {

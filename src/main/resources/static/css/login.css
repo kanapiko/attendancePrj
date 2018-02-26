@@ -6,9 +6,15 @@ body {
 
 .form-signin {
   max-width: 330px;
-  padding: 15px;
   margin: 0 auto;
+  color: #5d5d5d;
+  background: white;
+  padding: 26px;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
 }
+
 .form-signin .form-signin-heading,
 .form-signin .checkbox {
   margin-bottom: 10px;

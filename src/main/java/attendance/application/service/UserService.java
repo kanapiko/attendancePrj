@@ -2,16 +2,17 @@ package attendance.application.service;
 
 import attendance.application.dao.MUserDao;
 import attendance.application.dto.UserInfo;
-import attendance.application.emuns.AuthCd;
-import attendance.application.emuns.Flag;
 import attendance.application.entity.MUser;
+import attendance.application.security.AdminUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,6 +32,13 @@ public class UserService {
 		return muserDao.selectByMail(mail);
 	}
 
+	/**
+	 *
+	 * LINE IDを登録する。
+	 *
+	 * @param userId 対象ユーザID
+	 * @param lineId LINE ID
+	 */
 	public void registerLineId(Integer userId, String lineId) {
 	    muserDao.selectByPk(userId).ifPresent(muser -> {
 	        MUser entity = new MUser();
@@ -40,23 +48,32 @@ public class UserService {
 	    });
 	}
 
-	public Optional<MUser> adminLogin(String userId, String password) {
-		try {
-			new Long(userId);
-		} catch (NumberFormatException ex) {
-			return Optional.empty();
-		}
-
-		return muserDao.selectByPk(new Integer(userId))
-				.filter(muser ->
-						muser.delFlg.equals(Flag.OFF.getVal())
-								&& muser.authCd.equals(AuthCd.ADMIN.getCode())
-								&& passwordEncoder.matches(password, muser.password)
-				);
-	}
-
+	/**
+	 * ユーザ情報を検索する。
+	 *
+	 * @param orgCd 所属組織コード
+	 *
+	 * @return ユーザ情報リスト
+	 */
 	public List<UserInfo> findUsers(String orgCd) {
 		return muserDao.findUsers(orgCd);
 	}
 
+
+	/**
+	 * ユーザ情報を登録する。
+	 *
+	 * @param user ユーザ情報
+	 */
+	public void registerUser(MUser user) {
+
+		user.password = passwordEncoder.encode(user.password);
+
+		AdminUser principal = (AdminUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		user.registDate = LocalDateTime.now();
+		user.registUserId = principal.getUser().userId;
+		user.registFuncCd = "0";
+
+		muserDao.insert(user);
+	}
 }

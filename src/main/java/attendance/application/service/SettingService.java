@@ -31,6 +31,12 @@ public class SettingService {
         return mSettingDao.select();
     }
 
+    /**
+     *
+     * 設定情報を登録する
+     *
+     * @param setting 設定情報
+     */
     public void registerSetting(MSetting setting) {
 
         setting.businessFlagMon = StringUtils.isEmpty(setting.businessFlagMon) ? Flag.OFF.getVal() : Flag.ON.getVal();
