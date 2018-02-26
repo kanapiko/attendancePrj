@@ -62,6 +62,30 @@ function findUser(targetOrgCd) {
           });
 }
 
+function handleRegisterOrg() {
+   confirmBeforeSubmit("org-register-form", "登録しますか？", registerOrg);
+}
+
+function registerOrg() {
+   var formId = "org-register-form";
+
+   loading(formId);
+
+   $form = $("#" + formId);
+
+   $.ajax( {
+          url: '/admin/orgs',
+          method: 'POST',
+          data: $form.serialize()
+          }).done(function(res) {
+              removeLoading(formId);
+              alert("登録しました");
+          }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
+              removeLoading(formId);
+              alert("登録に失敗しました");
+          });
+}
+
 $(function() {
 
     findOrg();

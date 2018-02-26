@@ -1,14 +1,11 @@
 package attendance.application.dao;
 
 import attendance.application.entity.MOrg;
-import attendance.application.utils.SqlUtil;
 import ninja.cero.sqltemplate.core.SqlTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * 組織マスタDAO
@@ -25,5 +22,9 @@ public class MOrgDao {
      */
     public List<MOrg> findOrgs() {
         return sqlTemplate.forList("sql/MOrgDao/findOrgs.sql", MOrg.class);
+    }
+
+    public int insert(MOrg entity) {
+        return sqlTemplate.update("sql/MOrgDao/insert.sql", entity);
     }
 }

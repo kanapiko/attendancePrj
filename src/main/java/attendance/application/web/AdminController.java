@@ -1,13 +1,16 @@
 package attendance.application.web;
 
+import attendance.application.entity.MOrg;
 import attendance.application.entity.MSetting;
 import attendance.application.service.OrgService;
 import attendance.application.service.SettingService;
 import attendance.application.service.UserService;
+import attendance.application.web.form.OrgForm;
 import attendance.application.web.form.SettingForm;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -139,5 +142,19 @@ public class AdminController {
         redirectAttributes.addFlashAttribute("updateSuccessMsg", "保存が完了しました");
 
         return "redirect:/admin/setting";
+    }
+
+    @RequestMapping(value = "/orgs", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public @ResponseBody Map<String, Object> registerOrg(OrgForm orgForm){
+
+        log.debug("requested org form: {}", orgForm);
+
+        MOrg mOrg = modelMapper.map(orgForm, MOrg.class);
+
+        orgService.registerOrg(mOrg);
+
+        Map<String, Object> res = new HashMap<>();
+
+        return res;
     }
 }

@@ -4,8 +4,6 @@ import attendance.application.security.AdminUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.authentication.configurers.GlobalAuthenticationConfigurerAdapter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -32,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 "/img/**",
                 "/css/**",
                 "/js/**",
-                "/admin-lte/**",
+                "/lib/**",
                 "/user/**",
                 "/api/**");
     }
@@ -57,7 +55,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutRequestMatcher(new AntPathRequestMatcher("/admin/logout"))       // ログアウト処理のパス
                 .logoutSuccessUrl("/admin/login")    // ログアウト完了時の遷移先
                 .invalidateHttpSession(true)         // ログアウト時にセッションを破棄
-                .permitAll();
+                .permitAll()
+                .and()
+        .csrf()
+                .disable();
     }
 
 

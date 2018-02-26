@@ -1,11 +1,13 @@
 package attendance.application.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * 設定マスタエンティティ
  */
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class MSetting extends AbstractMasterEntity {
     public String openTime = "09";
     public String openMinutes = "00";
