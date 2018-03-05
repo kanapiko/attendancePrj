@@ -18,7 +18,7 @@ import java.util.Optional;
  * ユーザマスタDAO
  */
 @Component
-public class MUserDao {
+public class MUserDao implements MasterDao<MUser> {
 
 	private static final Logger logger = LoggerFactory.getLogger(MUserDao.class);
 

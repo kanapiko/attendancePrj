@@ -31,7 +31,7 @@ public class MSettingDao {
      * @param entity 設定マスタエンティティ
      * @return 更新件数
      */
-    public int insert(MSetting entity) {
+    public Integer insert(MSetting entity) {
         return sqlTemplate.update("sql/MSettingDao/insert.sql", entity);
     }
 
@@ -41,7 +41,7 @@ public class MSettingDao {
      * @param entity 設定マスタエンティティ
      * @return 更新件数
      */
-    public int update(MSetting entity) {
+    public Integer update(MSetting entity) {
         return sqlTemplate.update("sql/MSettingDao/update.sql", entity);
     }
 }
