@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -33,10 +34,15 @@ public class MUserDao {
 		return Optional.ofNullable(sqlTemplate.forObject("sql/MUserDao/selectByMail.sql", MUser.class, mail));
 	}
 
-	public List<UserInfo> findUsers(String orgCd) {
+	public List<UserInfo> findUsers(String orgCd, String name) {
 
 		Map<String, Object> cond = new HashMap<>();
+
 		cond.put("orgCd", orgCd);
+
+		if(!StringUtils.isEmpty(name)) {
+			cond.put("likeName", "%" + name + "%");
+		}
 
 		return sqlTemplate.forList("sql/MUserDao/findUsers.sql", UserInfo.class, cond);
 	}

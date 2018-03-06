@@ -104,7 +104,8 @@ function registerUser() {
           }).done(function(res) {
               removeLoading(formId);
               alert("登録しました");
-          }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
+          }).fail(function(jqXHR, textStatus, errorThrown) {
+              console.log(jqXHR.responseJSON);
               removeLoading(formId);
               alert("登録に失敗しました");
           });
@@ -126,22 +127,34 @@ $(function() {
     $('.select-org').select2({
         ajax: {
             url: '/admin/orgs/select2',
+            data: function (params) {
+                     return {
+                         name: params.term
+                     }
+                  },
             dataType: "json"
-        }
+        },
+        language: {"noResults": function(){ return "見つかりません";}},
+        escapeMarkup: function (markup) { return markup; }
     });
 
     $('.select-user').select2({
         ajax: {
             url: '/admin/users/select2',
-            dataType: "json"
-        }
+            data: function (params) {
+                     return {
+                         name: params.term
+                     };
+                  },
+            dataType: 'json'
+        },
+        language: {"noResults": function(){ return "見つかりません";}},
+        escapeMarkup: function (markup) { return markup; }
     });
 
     $('.select-auth').select2({
-        ajax: {
-            url: '/admin/auths/select2',
-            dataType: "json"
-        }
+        language: {"noResults": function(){ return "見つかりません";}},
+        escapeMarkup: function (markup) { return markup; }
     });
 
 });

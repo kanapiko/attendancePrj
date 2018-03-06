@@ -52,11 +52,12 @@ public class UserService {
 	 * ユーザ情報を検索する。
 	 *
 	 * @param orgCd 所属組織コード
+	 * @param name 名前
 	 *
 	 * @return ユーザ情報リスト
 	 */
-	public List<UserInfo> findUsers(String orgCd) {
-		return muserDao.findUsers(orgCd);
+	public List<UserInfo> findUsers(String orgCd, String name) {
+		return muserDao.findUsers(orgCd, name);
 	}
 
 
