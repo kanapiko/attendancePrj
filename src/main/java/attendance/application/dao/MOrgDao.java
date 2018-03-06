@@ -11,7 +11,7 @@ import java.util.List;
  * 組織マスタDAO
  */
 @Component
-public class MOrgDao {
+public class MOrgDao extends AbstractMasterDao<MOrg> {
 
     @Autowired
     private SqlTemplate sqlTemplate;
@@ -26,5 +26,9 @@ public class MOrgDao {
 
     public int insert(MOrg entity) {
         return sqlTemplate.update("sql/MOrgDao/insert.sql", entity);
+    }
+
+    public int update(MOrg entity) {
+        return sqlTemplate.update("sql/MOrgDao/update.sql", entity);
     }
 }
