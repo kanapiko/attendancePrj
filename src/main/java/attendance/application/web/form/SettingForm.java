@@ -3,6 +3,10 @@ package attendance.application.web.form;
 import lombok.Data;
 import org.springframework.util.StringUtils;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+
 /**
  * 設定マスタ画面フォーム
  */
@@ -24,6 +28,15 @@ public class SettingForm {
     public String businessFlagSat;
     public String businessFlagSun;
     public String alertFlag;
+    public LocalDateTime updateDate;
+
+    public Long getUpdateDateTs() {
+        return updateDate.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
+    }
+
+    public void setUpdateDateTs(Long ts) {
+        this.updateDate = LocalDateTime.ofInstant(Instant.ofEpochMilli(ts), ZoneId.systemDefault());
+    }
 
     public void setStartTime(String value) {
         if(!StringUtils.isEmpty(value)) {

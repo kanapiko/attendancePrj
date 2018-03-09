@@ -39,6 +39,7 @@ dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-security'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-aop'
     compile group: 'org.springframework.session', name: 'spring-session-data-redis'
     compile group: 'ninja.cero.bootiful-sqltemplate', name: 'bootiful-sqltemplate-core', version:'1.0.3'
     compile group: 'org.flywaydb', name: 'flyway-core'

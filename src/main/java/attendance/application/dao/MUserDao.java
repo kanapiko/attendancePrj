@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
-import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +18,7 @@ import java.util.Optional;
  * ユーザマスタDAO
  */
 @Component
-public class MUserDao {
+public class MUserDao extends AbstractMasterDao<MUser> {
 
 	private static final Logger logger = LoggerFactory.getLogger(MUserDao.class);
 
@@ -52,7 +51,6 @@ public class MUserDao {
 	}
 
 	public int update(MUser entity) {
-	    entity.updateDate = LocalDateTime.now();
 		return sqlTemplate.update("sql/MUserDao/update.sql", entity);
 	}
 }

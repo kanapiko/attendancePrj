@@ -1,6 +1,7 @@
 package attendance.application.dao;
 
 import attendance.application.entity.MSetting;
+import lombok.extern.slf4j.Slf4j;
 import ninja.cero.sqltemplate.core.SqlTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -10,8 +11,9 @@ import java.util.Optional;
 /**
  * 設定マスタDAO
  */
+@Slf4j
 @Component
-public class MSettingDao {
+public class MSettingDao extends AbstractMasterDao<MSetting> {
 
     @Autowired
     private SqlTemplate sqlTemplate;
@@ -42,6 +44,7 @@ public class MSettingDao {
      * @return 更新件数
      */
     public int update(MSetting entity) {
+        log.debug("updateDate:{}", entity.updateDate);
         return sqlTemplate.update("sql/MSettingDao/update.sql", entity);
     }
 }

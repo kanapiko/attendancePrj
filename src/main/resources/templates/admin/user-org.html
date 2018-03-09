@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta charset="utf-8"/>
     <!-- Select2 -->
-    <link rel="stylesheet" th:href="@{/lib/admin-lte/bower_components/select2/dist/css/select2.min.css}"
-          href="../../static/lib/admin-lte/bower_components/select2/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" th:href="@{/lib/admin-lte/plugins/select2/select2.min.css}"
+          href="../../static/lib/admin-lte/plugins/select2/bootstrap.min.css" />
 </head>
 <body>
 <div class="ui container" layout:fragment="content" th:remove="tag">
@@ -234,8 +234,8 @@
 </div>
 <div layout:fragment="script" th:remove="tag">
     <!-- Select2 -->
-    <script src="../../static/lib/admin-lte/bower_components/select2/dist/js/select2.min.js"
-            th:src="@{/lib/admin-lte/bower_components/select2/dist/js/select2.min.js}"></script>
+    <script src="../../static/lib/admin-lte/plugins/select2/select2.min.js"
+            th:src="@{/lib/admin-lte/plugins/select2/select2.min.js}"></script>
     <!-- JsRender -->
     <script th:src="@{/lib/jsrender/jsrender.min.js}"
             src="../../static/lib/jsrender/jsrender.min.js"></script>
