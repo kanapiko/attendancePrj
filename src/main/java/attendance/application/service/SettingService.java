@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.thymeleaf.util.StringUtils;
 
-import java.time.LocalDateTime;
 import java.util.Optional;
 
 /**
@@ -47,10 +46,6 @@ public class SettingService {
         setting.businessFlagSat = StringUtils.isEmpty(setting.businessFlagSat) ? Flag.OFF.getVal() : Flag.ON.getVal();
         setting.businessFlagSun = StringUtils.isEmpty(setting.businessFlagSun) ? Flag.OFF.getVal() : Flag.ON.getVal();
         setting.alertFlag = StringUtils.isEmpty(setting.alertFlag) ? Flag.OFF.getVal() : Flag.ON.getVal();
-
-        setting.updateUserId = 0;
-        setting.updateFuncCd = "0";
-        setting.updateDate = LocalDateTime.now();
 
         mSettingDao.update(setting);
     }

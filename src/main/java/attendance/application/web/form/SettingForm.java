@@ -3,9 +3,8 @@ package attendance.application.web.form;
 import lombok.Data;
 import org.springframework.util.StringUtils;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 
 /**
  * 設定マスタ画面フォーム
@@ -30,12 +29,12 @@ public class SettingForm {
     public String alertFlag;
     public LocalDateTime updateDate;
 
-    public Long getUpdateDateTs() {
-        return updateDate.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
+    public String getCurrentUpdateDate() {
+        return updateDate.format(DateTimeFormatter.ISO_DATE_TIME);
     }
 
-    public void setUpdateDateTs(Long ts) {
-        this.updateDate = LocalDateTime.ofInstant(Instant.ofEpochMilli(ts), ZoneId.systemDefault());
+    public void setCurrentUpdateDate(String dateTimeStr) {
+        this.updateDate = LocalDateTime.parse(dateTimeStr);
     }
 
     public void setStartTime(String value) {
